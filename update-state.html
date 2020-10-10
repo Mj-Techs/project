@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="../React Events/js/react.development.js"></script>
+    <script src="../React Events/js/react-dom.development.js"></script>
+    <script src="../React Events/js/babel.js"></script>
+
+    <script type="text/babel">
+      const rootHandle = document.getElementById("root");
+      const { useState } = React;
+
+      function Counter(props) {
+        const [count, setCount] = useState(0);
+        const increament = () => {
+          setCount(count + 1);
+        };
+        const decreament = () => {
+          setCount(count - 1);
+        };
+        const reset = () => {
+          const response = confirm("Are you sure?");
+          if (response) {
+            setCount(0);
+          }
+        };
+        return (
+          <div>
+            <h1>{count}</h1>
+            <button onClick={increament}>+1</button>
+            <button onClick={decreament}>-1</button>
+            <button onClick={reset}>reset</button>
+          </div>
+        );
+      }
+      ReactDOM.render(<Counter />, rootHandle);
+    </script>
+  </body>
+</html>
